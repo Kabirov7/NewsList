@@ -8,7 +8,7 @@ export default function NewsList(props) {
 
 	useEffect(() => {
 		let db = firebase.firestore();
-		db.collection("news")
+		db.collection("news").orderBy("scraping_time").limit(20)
 			.onSnapshot(function (querySnapshot) {
 				let news = [];
 				querySnapshot.forEach(function (doc) {
